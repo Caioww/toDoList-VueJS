@@ -28,6 +28,7 @@
   
     </div>
     </form>
+  <meu-botao rotulo="REGISTRAR"/>
 </div>
 
 </template>
