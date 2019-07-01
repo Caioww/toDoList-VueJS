@@ -28,6 +28,8 @@
   
     </div>
     </form>
+
+
   <meu-botao rotulo="REGISTRAR"/>
 </div>
 
@@ -37,7 +39,8 @@ import Botao from './shared/Botao'
 export default {
     components:{
         'meu-botao': Botao
-    }
+    },
+    
     
 }
 </script>

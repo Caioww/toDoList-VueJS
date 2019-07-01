@@ -7,6 +7,7 @@ import { routes } from './routes';
 import VueResource from 'vue-resource';
 
 
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
