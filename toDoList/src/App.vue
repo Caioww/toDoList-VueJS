@@ -30,6 +30,13 @@ export default {
     }
   },
 
+  created() {
+
+    this.$http.get('http://localhost:3000/lista')
+      .then(({ data }) => console.log(data))
+      .then(fotos => this.fotos = fotos, err => console.log(err));
+  },
+
    components: {
     'meu-menu' : Navbar,
     'meu-formulario' : Cadastro
@@ -39,6 +46,8 @@ export default {
  $(document).ready(function() {
     M.updateTextFields();
   });
+
+  
 
 </script>
 
