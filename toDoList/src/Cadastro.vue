@@ -39,11 +39,9 @@
     />
 
     <transition name="fade">
-    <h1 :class="classe" v-if="add">Deu certo!</h1>
-    <h1 v-if="notAdd">Falhou!</h1>
+      <h1 :class="classe" v-if="add">Deu certo!</h1>
+      <h1 v-if="notAdd">Falhou!</h1>
     </transition>
-    
-    
   </div>
 </template>
 <script>
@@ -51,37 +49,35 @@ import Botao from "./shared/Botao";
 import axios from "axios";
 
 export default {
-
-  props:{
-    add:{
+  props: {
+    add: {
       type: Boolean,
       default: false
     },
-    notAdd:{
+    notAdd: {
       type: Boolean,
       default: false
     },
-    classe:{
-      type: String,
+    classe: {
+      type: String
     }
   },
   components: {
     "meu-botao": Botao
   },
   created() {
-    this.startInterval()
-},
+    this.startInterval();
+  },
 
   methods: {
     startInterval() {
-        setInterval(() => {
+      setInterval(() => {
+        this.add = false;
+        this.notAdd = false;
+        this.classe = "faded";
+      }, 5000);
+    },
 
-                    this.add=false;
-                    this.notAdd = false;
-                    this.classe = "faded"
-                }, 5000)
-      },
-    
     adicionarPessoa() {
       let pessoa = {};
       pessoa.nome = this.$refs.myName.value;
@@ -99,19 +95,17 @@ export default {
         .catch(error => {
           if (error.response) {
             this.notAdd = true;
-            this.add= false;
+            this.add = false;
           }
         });
     }
-    },
-  
-  
+  }
 };
 </script>
 <style>
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
   opacity: 0;
