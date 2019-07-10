@@ -20,7 +20,7 @@ npm run dev
 
 After run this command using git bash go to paste toDoList and run:
 
-...
+```
 npm start
-...
+```
 
