@@ -4,9 +4,7 @@ This is a simple application to study.
 
 <h3>Technologys</h3>
 
-VueJS
-Materialize
-Axios
+VueJS + Materialize + Axios
 
 <h3>API</h3> 
 
