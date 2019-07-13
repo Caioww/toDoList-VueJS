@@ -10,7 +10,7 @@
 export default {
   props: {
     rotulo: {
-      required: true,
+      required: false,
       type: String
     },
     icone: {

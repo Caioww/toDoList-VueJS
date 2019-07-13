@@ -15,7 +15,7 @@
         <tr v-for="peoples in info">
           <td>
             <label>
-              <input type="checkbox" />
+              <input ref="checkOk" type="checkbox" :value="peoples._id" />
               <span>&nbsp;</span>
             </label>
           </td>
@@ -32,6 +32,7 @@
       tipo="button"
       classButton="btn-floating btn-large waves-effect waves-light red"
       classIcon="material-icons"
+      @botaoAtivado="apagarSelecionados()"
     />
 
     
@@ -50,11 +51,32 @@ export default {
     "meu-botao": Botao
   },
 
-  mounted() {
+  methods:{
+    apagarSelecionados() {
+    var $selecionados = document.querySelectorAll('td [type="checkbox"]:checked') // aqui seleciona todos os elementos checados
+    for(let i = 0; i < $selecionados.length; i++) {
+      $selecionados[i].parentNode.parentNode.parentNode.remove();
+      axios.delete("http://localhost:3000/lista/"+$selecionados[i].value).then(response => {
+        console.log('Excluido');
+      
+    })
+    }
+}
+
+  },
+
+  created() {
     axios.get("http://localhost:3000/lista").then(response => {
       this.info = response.data;
     });
+    
+    
   }
+
+
+  
+
+
 };
 </script>
 <style>
