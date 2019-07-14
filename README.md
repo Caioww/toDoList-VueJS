@@ -10,13 +10,13 @@ VueJS + Materialize + Axios
 
 ExpressJS + MongoDB
 
-To run this app do you need open tha paste api and start the command in git bash
+To run this app do you need open tha folder api and start the command in git bash
 
 ```
 npm run dev
 ```
 
-After run this command using git bash go to paste toDoList and run:
+After run this command using git bash go to folder toDoList and run:
 
 ```
 npm start
