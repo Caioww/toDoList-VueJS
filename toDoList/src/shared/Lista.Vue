@@ -35,7 +35,90 @@
       @botaoAtivado="apagarSelecionados()"
     />
 
+    <meu-botao id="botaoEditar"
+      icone="edit"
+      tipo="button"
+      classButton="btn-floating btn-large waves-effect waves-light green modal-trigger"
+      classIcon="material-icons"
+      link="#modal1"
+      @botaoAtivado="editarSelecionado()"
+
+    />
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Atualizar Informações</h4>
+            <table id="modalTable">
+              <tr>
+                <th></th>
+                <th>Informações atuais</th>
+                <th>Novas informações</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Nome:</b>
+                </td>
+                <td>
+                <span>{{pessoa.nome}}</span>
+                </td>
+                <td>
+                  <input ref="myName" type="text" class="validate" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Idade:</b>
+                </td>
+                <td>
+                  <span>{{pessoa.idade}}</span>
+                </td>
+                <td>
+                  <input ref="myAge" type="text" class="validate" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Telefone:</b>
+                </td>
+                <td>
+                  <span>{{pessoa.telefone}}</span>
+                </td>
+                <td>
+                  <input ref="myPhone" type="tel" class="validate" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Email:</b>
+                </td>
+                <td>
+                  <span>{{pessoa.email}}</span>
+                </td>
+                <td>
+                  <input ref="myEmail" type="email" class="validate" />
+                </td>
+              </tr>
+
+            </table>
+        </div>
+        <div class="modal-footer">
+
+            <meu-botao
+      tipo="link"
+      classButton="modal-close waves-effect waves-green btn-flat "
+      @botaoAtivado="efetuarAtualizacao()"
+      rotulo="EDITAR"
+
+    />
     
+        </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -44,9 +127,13 @@ import axios from "axios";
 export default {
   data() {
     return {
-      info: null
-    };
+      info: null,
+      pessoa:{},
+      
+    
+  }
   },
+
   components: {
     "meu-botao": Botao
   },
@@ -61,9 +148,39 @@ export default {
       
     })
     }
-}
+},
+    editarSelecionado(){
+     var $selecionados = document.querySelector('td [type="checkbox"]:checked').value // aqui seleciona todos os elementos checados
+      axios.get("http://localhost:3000/lista/"+$selecionados).then(response => {
+        this.pessoa=response.data;
+      
+      
+    })
+    },
 
-  },
+    efetuarAtualizacao(){
+      var $selecionados = document.querySelector('td [type="checkbox"]:checked').value
+       let pessoa = {};
+      pessoa.nome = this.$refs.myName.value;
+      pessoa.email = this.$refs.myEmail.value;
+      pessoa.telefone = this.$refs.myPhone.value;
+      pessoa.idade = this.$refs.myAge.value;
+
+      console.log(pessoa);
+     
+      axios
+        .put("http://localhost:3000/lista/"+$selecionados, pessoa)
+        .then(response => {
+          console.log("Atualizado com sucesso");
+        })
+    }
+
+
+
+  
+
+},
+
 
   created() {
     axios.get("http://localhost:3000/lista").then(response => {
@@ -74,14 +191,27 @@ export default {
   }
 
 
-  
-
 
 };
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+    var elem= document.querySelector('.modal');
+    var instance = M.Modal.init(elem, '');
+    M.Modal.getInstance(instance).open();
+  });
+
+
+
 </script>
 <style>
 #botaoRemove{
   padding-top: 20px;
+  float: left;
+}
+
+#botaoEditar{
+  padding-top: 20px;
+  float:left;
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
 <div :id="id">
-  <button  @click="disparaAcao()"  :class="classButton" :type="tipo" name="action">
+  <button  @click="disparaAcao()"  :class="classButton" :type="tipo" name="action" :href="link">
     {{rotulo}}
     <i :class="classIcon">{{icone}}</i>
   </button>
@@ -14,7 +14,7 @@ export default {
       type: String
     },
     icone: {
-      required: true,
+      required: false,
       type: String
     },
     tipo: {
@@ -31,6 +31,10 @@ export default {
     },
     funcao: {
       type: Function
+    },
+    link: {
+      required: false,
+      type: String
     },
       confirmacao: Boolean,
         estilo: String
