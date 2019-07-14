@@ -16,7 +16,7 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input ref="myPhone" id="icon_telephone" type="tel" class="validate" />
+          <input ref="myPhone" id="icon_telephone" type="tel" class="validate" v-mask="['(##) ####-####', '(##) #####-####']"/>
           <label for="icon_telephone">Telefone</label>
         </div>
 
