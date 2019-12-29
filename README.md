@@ -1,24 +1,18 @@
-# VueJS Application
+# todolist
 
-This is a simple application to study.
+> A Vue.js project
 
-<h3>Technologys</h3>
+## Build Setup
 
-VueJS + Materialize + Axios
+``` bash
+# install dependencies
+npm install
 
-<h3>API</h3> 
-
-ExpressJS + MongoDB
-
-To run this app do you need open tha folder api and start the command in git bash
-
-```
+# serve with hot reload at localhost:8080
 npm run dev
+
+# build for production with minification
+npm run build
 ```
 
-After run this command using git bash go to folder toDoList and run:
-
-```
-npm start
-```
-
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
