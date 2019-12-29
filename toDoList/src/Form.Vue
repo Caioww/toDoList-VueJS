@@ -87,19 +87,19 @@ export default {
   props: {
     nome: {
       type: String,
-      default: false
+      default: null
     },
     telefone: {
       type: String,
-      default: false
+      default: null
     },
     idade: {
       type: String,
-      default: false
+      default: null
     },
     email: {
       type: String,
-      default: false
+      default: null
     },
   },
 
@@ -118,12 +118,14 @@ export default {
       pessoa.idade = this.$refs.myAge.value;
 
       console.log(pessoa);
-     
+     let att=false;
       axios
         .put("http://localhost:3000/lista/"+$selecionados, pessoa)
         .then(response => {
           console.log("Atualizado com sucesso");
+          
         })
+        
     }
 
 
@@ -138,7 +140,7 @@ export default {
  document.addEventListener('DOMContentLoaded', function() {
     var elem= document.querySelector('.modal');
     var instance = M.Modal.init(elem, '');
-    M.Modal.getInstance(instance).open();
+  
   });
 
 

@@ -2,7 +2,7 @@
 
  <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">VueJs + Materialize</a>
+      <a href="#!" class="brand-logo center">VueJs App</a>
       <ul class="left hide-on-med-and-down">
 
         <li v-for="rota in rotas">

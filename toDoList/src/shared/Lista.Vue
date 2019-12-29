@@ -59,6 +59,7 @@
 import Botao from "./Botao";
 import axios from "axios";
 import Form from "../Form";
+
 export default {
   data() {
     return {
@@ -75,6 +76,7 @@ export default {
   },
 
   methods:{
+    
     apagarSelecionados() {
     var $selecionados = document.querySelectorAll('td [type="checkbox"]:checked') // aqui seleciona todos os elementos checados
     for(let i = 0; i < $selecionados.length; i++) {
@@ -117,6 +119,7 @@ export default {
 #botaoRemove{
   padding-top: 20px;
   float: left;
+  padding-right: 10px;
 }
 
 #botaoEditar{
