@@ -1,4 +1,4 @@
-# todolist
+# Vuejs application
 
 > A Vue.js project
 
